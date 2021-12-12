@@ -13,6 +13,9 @@ function RenderLeader({ leader }) {
   return (
     <div key={leader.id} className="col-12 mt-5">
       <Media tag="li">
+ 	<Link to={`/aboutus/${leader.id}`}>
+        {" "}
+        {/* Back Quotes not normal one `` */}
         <Media left middle>
           <Media object src={leader.image} alt={leader.name} />
         </Media>
@@ -21,6 +24,7 @@ function RenderLeader({ leader }) {
           <p>{leader.designation}</p>
           <p>{leader.description}</p>
         </Media>
+	</Link>
       </Media>
     </div>
   );
