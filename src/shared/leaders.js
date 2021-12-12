@@ -1,6 +1,7 @@
 export const LEADERS = [
     {
       id: 0,
+      leaderId: 0,
       name: 'Peter Pan',
       image: '/assets/images/alberto.png',
       designation: 'Chief Epicurious Officer',
@@ -10,6 +11,7 @@ export const LEADERS = [
     },
     {
       id: 1,
+      leaderId: 1,
       name: 'Dhanasekaran Witherspoon',
       image: '/assets/images/alberto.png',
       designation: 'Chief Food Officer',
@@ -19,6 +21,7 @@ export const LEADERS = [
     },
     {
       id: 2,
+      leaderId: 2,
       name: 'Agumbe Tang',
       image: '/assets/images/alberto.png',
       designation: 'Chief Taste Officer',
@@ -28,6 +31,7 @@ export const LEADERS = [
     },
     {
       id: 3,
+      leaderId: 3,
       name: 'Alberto Somayya',
       image: '/assets/images/alberto.png',
       designation: 'Executive Chef',
