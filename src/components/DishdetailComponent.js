@@ -43,14 +43,15 @@ function RenderComments({ comments }) {
             <p>{comments.comment}</p>
             <p>
               -- {comments.author} ,{" "}
-              {/* {new Intl.DateTimeFormat("en-US", {
+              {new Intl.DateTimeFormat("en-US", {
                 year: "numeric",
                 month: "short",
-                day: "2-digit",
-              }).format(new Date(Date.parse(comments.date)))} */}
+                day: "2-digit"
+              }).format(new Date(Date.parse(comments.date)))}
             </p>
           </li>
           );
+          <CommentForm />
         </ul>
       </div>
     );
@@ -78,7 +79,6 @@ const Dishdetail = (props) => {
           </div>
           <div className="col col-md-12 m-1">
             <RenderComments comments={props.comments} />
-            <CommentForm />
           </div>
         </div>
       </div>
@@ -120,7 +120,7 @@ class CommentForm extends Component {
       <div>
         <div className="ml-auto">
           <Button outline onClick={this.toggleModal}>
-            <span className="fa fa-sign-in fa-lg"></span> Submit Comment
+            <span className="fas fa-comment fa-lg"></span> Submit Comment
           </Button>
         </div>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
