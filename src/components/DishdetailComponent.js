@@ -16,7 +16,7 @@ import {
   Label
 } from "reactstrap";
 import { Control, LocalForm, Errors } from "react-redux-form";
-
+import { Loading } from "./LoadingComponent";
 import { Link } from "react-router-dom";
 
 function RenderDish({ dish }) {
@@ -33,7 +33,7 @@ function RenderDish({ dish }) {
   else return <div></div>;
 }
 
-function RenderComments({comments, addComment, dishId}) {
+function RenderComments({ comments, addComment, dishId }) {
   if (comments != null) {
     return (
       <div className="col-12 col-5 m-1">
@@ -42,7 +42,7 @@ function RenderComments({comments, addComment, dishId}) {
           <li key={comments.id}>
             <p>{comments.comment}</p>
             <p>
-              -- {comments.author} ,{" "}
+              -- {comments.author} , ,
               {new Intl.DateTimeFormat("en-US", {
                 year: "numeric",
                 month: "short",
@@ -58,7 +58,23 @@ function RenderComments({comments, addComment, dishId}) {
   }
 }
 const Dishdetail = (props) => {
-  if (props.dish != null) {
+  if (props.isLoading) {
+    return (
+      <div className="container">
+        <div className="row">
+          <Loading />
+        </div>
+      </div>
+    );
+  } else if (props.errMess) {
+    return (
+      <div className="container">
+        <div className="row">
+          <h4>{props.errMess}</h4>
+        </div>
+      </div>
+    );
+  } else if (props.dish != null) {
     return (
       <div className="container">
         <div className="row">
@@ -78,10 +94,11 @@ const Dishdetail = (props) => {
             <RenderDish dish={props.dish} />
           </div>
           <div className="col col-md-12 m-1">
-          <RenderComments comments={props.comments}
-        addComment={props.addComment}
-        dishId={props.dish.id}
-      />
+            <RenderComments
+              comments={props.comments}
+              addComment={props.addComment}
+              dishId={props.dish.id}
+            />
           </div>
         </div>
       </div>
@@ -109,7 +126,12 @@ class CommentForm extends Component {
   }
   handleSubmitComment(values) {
     this.toggleModal();
-    this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+    this.props.addComment(
+      this.props.dishId,
+      values.rating,
+      values.author,
+      values.comment
+    );
     console.log("Current State is: " + JSON.stringify(values));
     alert("Current State is: " + JSON.stringify(values));
     // event.preventDefault();
