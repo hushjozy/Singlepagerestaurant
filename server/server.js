@@ -1,22 +1,20 @@
-require('dotenv').config()
+require("dotenv").config();
 const express = require("express");
-const nodemailer =require ("nodemailer");
-const request =require ("request");
+const nodemailer = require("nodemailer");
+const request = require("request");
 const bodyParser = require("body-parser");
-const path = require('path');
+const path = require("path");
 
-const app= express();
-const port = 3000
+const app = express();
+const port = 3000;
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/index.html'));
-  });
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "/index.html"));
+});
 
-app.post("/",(req,res) =>{
-
-})
+app.post("/", (req, res) => {});
 app.listen(process.env.PORT || port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Example app listening on port ${port}`);
+});
